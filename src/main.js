@@ -93,6 +93,7 @@ window.onbeforeunload=()=>{
 $('.clear').on('click',()=>{
     console.log('xxx');
     localStorage.removeItem('x')
+    render()
 })
 $(document).on('keypress',(e)=>{
     console.log(e.key);

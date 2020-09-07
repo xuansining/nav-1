@@ -24,6 +24,25 @@ img{
 body {
     background-color: #eee;
 }
+@media (max-width:321px){
+     .globalMain .siteList >li .site{
+    
+        width: 120px;
+      }
+      .globalMain .last .addButton{
+          width: 120px;
+      }
+}
+@media (max-width:361px){
+   
+    .siteList >li .site{
+    
+      width: 140px;
+    }
+    .last .addButton{
+        width: 140px;
+    }
+}
 @media (min-width:500px){
   .globalHeader{
       margin-top: 50px;
@@ -47,6 +66,7 @@ body {
   .globalMain .siteList >li{
     margin-right: 25px;
 }
+
  
  
 }
@@ -95,6 +115,7 @@ body {
     position: relative;
     margin-bottom: 10px;
     border-radius: 4px;
+    
 }
 
 .globalMain .site {

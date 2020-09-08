@@ -1,7 +1,7 @@
 const x=localStorage.getItem('x')
 const xObject=JSON.parse(x)
 
-const hashMap=xObject || [
+let hashMap=xObject || [
     {
         logo:'A',
         logoType:'text',
@@ -38,32 +38,38 @@ const $last=$siteList.find('.last')
 const render=()=>{
     $siteList.find('li:not(.last)').remove()
     hashMap.forEach((node,index)=>{
-        const site=$(`
+        const $li=$(`
         <li>
-             <a href="${node.url}">  
+             
                  <div class="site">
                  <div class="logo">${node.logo}</div>
                  <div class="link">${cutUrl(node.url)}</div>
-             </div>
-             </a>
-             <div class="delete">
-                <svg class="icon" >
-              <use xlink:href="#icondelete"></use>
-               </svg>
+
+                 <div class="delete">
+                 <svg class="icon" >
+               <use xlink:href="#icondelete"></use>
+                </svg>
+              
+              </div>
+            
+                </div>
              
-             </div>
-           
+            
     
          </li>
     
     `).insertBefore($last)
-       console.log(index);
-       const $li=$siteList.find('li')
+      $li.on('click',(e)=>{
+          window.open(node.url)
+      })
+       
        $li.on('click','.delete',(e)=>{
            e.stopPropagation()
            hashMap.splice(index,1)
            render()
+         
        })
+    
     })
     
 
@@ -90,11 +96,7 @@ window.onbeforeunload=()=>{
     console.log(typeof string);
     localStorage.setItem('x',string)
 }
-$('.clear').on('click',()=>{
-    console.log('xxx');
-    localStorage.removeItem('x')
-    render()
-})
+
 $(document).on('keypress',(e)=>{
     console.log(e.key);
     const {key} = e
